@@ -4,15 +4,10 @@ on :
     branches : 
       - main
 
-defaults :
-  run :
-    working-directory : C:\User\AXGATE
-
-
 jobs : 
   build :
     runs-on : self-hosted
     steps :
 
     - name : test
-      run : dir
+      run : ./run.cmd
