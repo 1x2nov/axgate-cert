@@ -8,11 +8,6 @@ jobs :
   build :
     runs-on : centos-latest
     steps :
-    - name : pre install_1
-      run : apt-get update
-
-    - name : pre install_2
-      run : apt-get upgrade
 
     - name : pre install_3
       run : apt-get install -y gcc libpcre3-dev zlib1g-dev libluajit-5.1-dev libpcap-dev openssl libssl-dev libnghttp2-dev libdumbnet-dev bison flex libdnet autoconf libtool
