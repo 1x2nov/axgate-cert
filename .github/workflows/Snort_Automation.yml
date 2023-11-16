@@ -2,7 +2,7 @@ name : Snort Automation
 on :
   push :
     paths :
-      - rule_test
+      - "rule_test"
     branches : 
       - master
 
