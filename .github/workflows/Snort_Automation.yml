@@ -10,4 +10,4 @@ jobs :
     steps :
 
     - name : test
-      run : snort -V
+      run : cd C:\User\AXGATE ; snort -V
