@@ -4,7 +4,5 @@
 2. 사용자 PC에서 Powershell 관리자 권한으로 실행 후 Get-ExecutionPolicy로 권한 확인
       -> Restricted 일 경우
        Set-ExecutionPolicy -ExecutionPolicy RemoteSigned 입력 후 A 로 변경
-<<<<<<< HEAD
 3. setsetsatset
-=======
->>>>>>> 5f65941bedc2f5946adff4e81c14092ed1fc4e35
+41243241q234 234123 4fafsdfads
