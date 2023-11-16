@@ -10,4 +10,4 @@ jobs :
     steps :
 
     - name : test
-      run : snort -V
+      run : python "c:/Users/AXGATE/Desktop/Workspace for code/snort automation.py"
