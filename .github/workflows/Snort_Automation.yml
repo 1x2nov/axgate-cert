@@ -1,6 +1,8 @@
 name : Snort Automation
 on :
   push :
+    paths :
+      - "README.md"
     branches : 
       - main
 
