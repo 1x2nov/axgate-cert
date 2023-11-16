@@ -18,6 +18,7 @@ line = list(set(line)) #Rule에서 검증할 pcap대상을 CVE이름으로 가�
 
 pcap_folder = os.listdir(path_store) #path_store에 있는 파일 목록을 저장
 
+data=[]# 결과값 저장 변수
 for name in pcap_folder : 
     split = name.split('_')
     cve_name = split[1] #파일 목록에서 CVE코드 부분만 저장
@@ -26,6 +27,7 @@ for name in pcap_folder :
         for num in range(0,len(pcap_list)) :
             command = snort+path_store+"\\"+name+"\\"+pcap_list[num]+" -c "+path_snort_conf+" -q"
             result = subprocess.Popen(command, stdout=subprocess.PIPE, encoding="cp949").stdout # 해당 CVE에 대해서 snort 수행
-            data = result.read().strip() #결과값을 data에 저장
-            print (data) #결과값 출력
+            data.append(result.read().strip()) #결과값을 data에 저장
+
             result.close()
+print (*data, sep='\n') #결과값 출력
