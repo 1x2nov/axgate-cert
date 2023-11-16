@@ -10,4 +10,4 @@ jobs :
     steps :
 
     - name : test
-      run : ./run.cmd
+      run : dir
