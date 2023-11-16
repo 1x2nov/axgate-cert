@@ -1,0 +1,13 @@
+name : Snort Automation
+on :
+  push :
+    branches : 
+      - main
+
+jobs : 
+  build :
+    runs-on : self-hosted
+    steps :
+
+    - name : test
+      run : python "c:/Users/AXGATE/Desktop/Workspace for code/snort automation.py"
