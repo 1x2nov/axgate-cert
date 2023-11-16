@@ -1,11 +1,11 @@
 name : Snort Automation
 on :
   push :
-    paths :
-      - "rule_test"
-    branches : 
+   branches : 
       - master
-
+   paths :
+      - "rule_test/**"
+      
 jobs : 
   build :
     runs-on : self-hosted
