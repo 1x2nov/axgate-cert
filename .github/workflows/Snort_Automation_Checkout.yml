@@ -1,0 +1,4 @@
+name : Checkout 
+on : push
+  jobs :
+    checkout
