@@ -3,7 +3,9 @@ on :
   push :
     branches : 
       - master
-      
+    paths :
+      - "rule_test/test"
+
 jobs :
   build :
     runs-on : self-hosted
