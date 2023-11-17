@@ -1,25 +1,14 @@
-name : Notice to Slack
-
-on:
-  push:
-    branches:
-    - master
-  pull_request:
-    branches:
-    - master
-
-jobs:
-  build : 
-    runs-on : ubuntu-latest
-
+name : Snort To Slack
+on :
+  workflow_run :
+    workflows : [Snort Automation]
+    types : 
+      - completed
+      
+jobs : 
+  build :
+    runs-on : self-hosted
     steps :
 
-    - name: action-slack
-      uses: 8398a7/action-slack@v3
-      with:
-        status: ${{ job.status }}
-        author_name: Github Action Test # default: 8398a7@action-slack
-        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_NOTICE }} # required
-      if: always() # Pick up events even if the job fails or is canceled.
+    - name : execute
+      run : python snort_result_to_slack.py
