@@ -15,4 +15,5 @@ jobs :
       with:
         sparse-checkout: |
             snort_automation.py
+            snort_result_to_slack.py
         sparse-checkout-cone-mode: false
