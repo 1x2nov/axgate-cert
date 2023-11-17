@@ -1,0 +1,15 @@
+name : Checkout 
+on : 
+  push :
+    branches : 
+      - master
+      
+jobs :
+  build :
+    runs-on : self-hosted
+    steps :
+    - uses: actions/checkout@v4
+      with:
+        sparse-checkout: |
+            snort_automation.py
+        sparse-checkout-cone-mode: false
