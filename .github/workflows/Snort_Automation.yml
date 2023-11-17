@@ -4,7 +4,7 @@ on :
    branches : 
       - master
    paths :
-      - "rule_test/**"
+      - "rule_test/test"
       
 jobs : 
   build :
@@ -12,4 +12,7 @@ jobs :
     steps :
 
     - name : test
-      run : python "snort automation.py"
+      run : cd %GIT%
+      
+    - name : execute
+      run : python snort_automation.py
