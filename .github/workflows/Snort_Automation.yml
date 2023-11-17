@@ -1,10 +1,9 @@
 name : Snort Automation
 on :
-  push :
-   branches : 
-      - master
-   paths :
-      - "rule_test/test"
+  workflow_run :
+    workflows : [Checkout Snort Automation]
+    types : 
+      - completed
       
 jobs : 
   build :
