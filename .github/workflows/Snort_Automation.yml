@@ -14,5 +14,8 @@ jobs :
     - name : test
       run : cd C:\
       
+    - name : move
+      run : cd %GIT%
+      
     - name : execute
       run : python snort_automation.py
