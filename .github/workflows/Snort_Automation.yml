@@ -12,4 +12,4 @@ jobs :
     steps :
 
     - name : test
-      run : python "c:/Users/AXGATE/Desktop/Workspace for code/snort automation.py"
+      run : python "https://github.com/1x2nov/axgate-cert/blob/master/snort%20automation.py"
