@@ -12,7 +12,7 @@ jobs :
     steps :
 
     - name : test
-      run : cd "%GIT%" 
+      run : cd %GIT%
       
     - name : execute
       run : python snort_automation.py
