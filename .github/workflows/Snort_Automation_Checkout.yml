@@ -10,8 +10,8 @@ jobs :
   build :
     runs-on : self-hosted
     steps :
-    - name : Checkout Snort Automation
     - uses: actions/checkout@v4
+    - name : Checkout Snort Automation
       with:
         sparse-checkout: |
             snort_automation.py
