@@ -3,7 +3,7 @@ import os
 import pandas as pd
 
 path_extract = '/snort/tmp_pcap/'
-path_store = '/snort/aegisc_CVE_pcap'
+path_store = '/snort/aegis_CVE_pcap'
 list_csv='/snort/pcaplist.csv'
 
 
