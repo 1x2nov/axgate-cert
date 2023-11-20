@@ -11,4 +11,4 @@ jobs :
     steps :
 
     - name : execute
-      run : python snort_automation.py
+      run : python3 snort_automation.py
