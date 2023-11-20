@@ -10,8 +10,6 @@ result = pd.read_csv('C:\\actions-runner\\_work\\axgate-cert\\axgate-cert\\snort
 result = result.values.tolist()
 
 
-
-
 format_message = []
 for index in range(0,len(result)) :
     format_message.append("CVE : {} 성공 : {} 실패 : {}".format(result[index][0], result[index][1], result[index][2]))

@@ -26,9 +26,7 @@ for name in folders :
                 continue
        for pcap in listofpcap: 
          ext_path, ext_file = os.path.splitext(pcap)
-         print(path_store+"\\"+"aegis_"+ext_path+"_pcap"+"\\"+ext_path+"_"+filenum+ext_file)
-
-#         if os.path.isfile(path_from+"\\"+pcap) :
-#            os.rename(path_from+"\\"+pcap, path_store+"\\"+"aegis_"+ext_path+"_pcap"+"\\"+ext_path+"_"+filenum+ext_file)
+         if os.path.isfile(path_from+"\\"+pcap) :
+           os.rename(path_from+"\\"+pcap, path_store+"\\"+"aegis_"+ext_path+"_pcap"+"\\"+ext_path+"_"+filenum+ext_file)
 
 

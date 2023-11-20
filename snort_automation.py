@@ -4,9 +4,9 @@ import pandas as pd
 
 # 실행할 명령어
 snort = "snort -A console -r"  #snort 수행 결과 출력
-path_store = 'C:\\Users\\AXGATE\\Desktop\\2023.11.14_2018-2019_Payload\\AX_2018-19\\aegisc_CVE_pcap' #snort로 검증할 pcap이 있는 경로
-path_snort_conf= 'C:\\Snort\\etc\\snort.conf' #Snort 설정파일 경로
-path_snort_rule = 'C:\\Snort\\rules\\vulnerability.rules' #Snort Rule 파일. 추후 git으로 변경
+path_store = '/snort/aegisc_CVE_pcap' #snort로 검증할 pcap이 있는 경로
+path_snort_conf= '/etc/snort.conf' #Snort 설정파일 경로
+path_snort_rule = '/etc/rules/vulnerability.rules' #Snort Rule 파일. 추후 git으로 변경
 
 
 
@@ -27,12 +27,12 @@ for name in pcap_folder :
     split = name.split('_')
     cve_name = split[1] #파일 목록에서 CVE코드 부분만 저장
     if cve_name in line : # 파일 목록의 CVE코드와 Rule에서 저장한 CVE코드가 일치할 경우
-        pcap_list=os.listdir(path_store+"\\"+name)
+        pcap_list=os.listdir(path_store+"/"+name)
         data.append([])
         data[runcount].append(cve_name)            
 
         for num in range(0,len(pcap_list)) :
-            command = snort+path_store+"\\"+name+"\\"+pcap_list[num]+" -c "+path_snort_conf+" -q"
+            command = snort+path_store+"/"+name+"/"+pcap_list[num]+" -c "+path_snort_conf+" -q"
             result = subprocess.Popen(command, stdout=subprocess.PIPE, encoding="cp949").stdout # 해당 CVE에 대해서 snort 수행
             data[runcount].append(result.read().strip()) #결과값을 data에 저장
             result.close()
@@ -66,4 +66,4 @@ for index in range(0,len(data)) :
 print(exe_result)
 
 df_exe_result = pd.DataFrame(exe_result)
-df_exe_result.to_csv("C:\\actions-runner\\_work\\axgate-cert\\axgate-cert\\snort_result.csv", header=None, index=None)
+df_exe_result.to_csv("/actions-runner/_work/axgate-cert/axgate-cert/snort_result.csv", header=None, index=None)
