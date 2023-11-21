@@ -12,7 +12,4 @@ jobs :
     steps :
     - name : Checkout Snort Automation
       uses: actions/checkout@v4
-      with:
-        sparse-checkout: |
-            snort_automation.py
-            snort_result_to_slack.py
+
