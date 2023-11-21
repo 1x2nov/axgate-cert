@@ -4,7 +4,7 @@ on :
     branches : 
       - master
     paths :
-      - "rule_test/test"
+      - "rule_test/vulnerability.rules"
 
 jobs :
   build :
