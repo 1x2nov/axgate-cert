@@ -3,9 +3,9 @@ import os
 import pandas as pd
 
 # 실행할 명령어
-snort = "snort -A console -r"  #snort 수행 결과 출력
+snort = "snort -A console -r "  #snort 수행 결과 출력
 path_store = '/snort/aegis_CVE_pcap' #snort로 검증할 pcap이 있는 경로
-path_snort_conf= '/etc/snort.conf' #Snort 설정파일 경로
+path_snort_conf= '/etc/snort/snort.conf' #Snort 설정파일 경로
 path_snort_rule = '/etc/snort/rules/vulnerability.rules' #Snort Rule 파일. 추후 git으로 
 
 with open(path_snort_rule, 'r') as file :
