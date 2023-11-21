@@ -1,4 +1,4 @@
-name : Snort Automation
+name : Move Rules file
 on :
   workflow_run :
     workflows : [Checkout]
