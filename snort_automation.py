@@ -63,5 +63,5 @@ for index in range(0,len(data)) :
 
 print(exe_result)
 
-df_exe_result = pd.DataFrame(exe_result)
-df_exe_result.to_csv("/actions-runner/_work/axgate-cert/axgate-cert/snort_result.csv", header=None, index=None)
+#df_exe_result = pd.DataFrame(exe_result)
+#df_exe_result.to_csv("/actions-runner/_work/axgate-cert/axgate-cert/snort_result.csv", header=None, index=None)
