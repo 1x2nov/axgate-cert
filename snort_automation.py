@@ -31,7 +31,7 @@ for name in pcap_folder :
 
         for num in range(0,len(pcap_list)) :
             command = snort+path_store+"/"+name+"/"+pcap_list[num]+" -c "+path_snort_conf+" -q"
-            result = subprocess.Popen(command, stdout=subprocess.PIPE, encoding="cp949").stdout # 해당 CVE에 대해서 snort 수행
+            result = subprocess.Popen(command, stdout=subprocess.PIPE, encoding="UTF-8").stdout # 해당 CVE에 대해서 snort 수행
             data[runcount].append(result.read().strip()) #결과값을 data에 저장
             result.close()
         runcount+=1
