@@ -43,7 +43,6 @@ exe_result = [["CVE NAME", "Success", "Failure"]] # 최종 결과 값
 for index in range(0,len(data)) :
     index_for_result = 0
     for check_fail in range(1, len(data[index])-1) : 
-        print(data[index][0])
         if data[index][0] in data[index][check_fail+1] :
             if index_for_result == 0 :
                 cve_tmp = data[index][0]
