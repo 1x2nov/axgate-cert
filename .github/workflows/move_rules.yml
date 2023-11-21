@@ -1,0 +1,13 @@
+name : Snort Automation
+on :
+  workflow_run :
+    workflows : [Checkout]
+    types : 
+      - completed
+
+jobs :
+  build :
+    runs-on : self-hosted
+    steps :
+    - name : move_rules
+      run : mv rule_test/vulnerability.rules /etc/snort/rules/
