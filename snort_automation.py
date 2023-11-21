@@ -14,8 +14,8 @@ file.close()
 
 line =[]
 for lines in file_content:
-   line.append(lines[lines.find("CVE"):lines.find("_")]) 
-line = list(set(line)) #Rule에서 검증할 pcap대상을 CVE이름으로 가져와 저장
+   line.append(lines[lines.find("msg:")+5:lines.find("_")]) 
+line = list(set(line)) #Rule에서 검증할 pcap대상을 pcap이름으로 가져와 저장
 
 pcap_folder = os.listdir(path_store) #path_store에 있는 파일 목록을 저장
 
@@ -23,17 +23,16 @@ data=[]# 결과값 저장 변수
 runcount = 0
 for name in pcap_folder : 
     split = name.split('_')
-    cve_name = split[1] #파일 목록에서 CVE코드 부분만 저장
-    if cve_name in line : # 파일 목록의 CVE코드와 Rule에서 저장한 CVE코드가 일치할 경우
+    cve_name = split[1] #파일 목록에서 pcap이름 부분만 저장
+    if cve_name in line : # 파일 목록의 pcap이름과 Rule에 포함된 pcap이름이 일치할 경우
         pcap_list=os.listdir(path_store+"/"+name)
-        data.append([])
-        data[runcount].append(cve_name)            
+        data.append([cve_name, pcap_list])
 
         for num in range(0,len(pcap_list)) :
             command = snort+path_store+"/"+name+"/"+pcap_list[num]+" -c "+path_snort_conf+" -q"
-            result = subprocess.Popen(command, stdout=subprocess.PIPE, encoding="UTF-8").stdout # 해당 CVE에 대해서 snort 수행
-            data[runcount].append(result.read().strip()) #결과값을 data에 저장
-            result.close()
+            result = os.popen(command) # 해당 CVE에 대해서 snort 수행
+            result = result.read()
+            data[runcount].append(result.strip()) #결과값을 data에 저장
         runcount+=1
 
 
@@ -43,13 +42,14 @@ exe_result = [["CVE NAME", "Success", "Failure"]] # 최종 결과 값
 
 for index in range(0,len(data)) :
     index_for_result = 0
-    for check_fail in range(1, len(data[index])) : 
-        if "CVE" in data[index][check_fail] :
+    for check_fail in range(1, len(data[index])-1) : 
+        print(data[index][0])
+        if data[index][0] in data[index][check_fail+1] :
             if index_for_result == 0 :
                 cve_tmp = data[index][0]
                 index_for_result += 1
             success_count += 1
-        if "CVE" not in data[index][check_fail] :
+        if data[index][0] not in data[index][check_fail+1] :
             if index_for_result == 0 :
                 cve_tmp = data[index][0]
                 index_for_result += 1
@@ -60,8 +60,7 @@ for index in range(0,len(data)) :
     fail_count = 0
 
 
-
 print(exe_result)
 
-#df_exe_result = pd.DataFrame(exe_result)
-#df_exe_result.to_csv("/actions-runner/_work/axgate-cert/axgate-cert/snort_result.csv", header=None, index=None)
+df_exe_result = pd.DataFrame(exe_result)
+df_exe_result.to_csv("/actions-runner/_work/axgate-cert/axgate-cert/snort_result.csv", header=None, index=None)
