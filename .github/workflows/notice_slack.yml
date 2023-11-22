@@ -11,4 +11,4 @@ jobs :
     steps :
 
     - name : execute
-      run : python snort_result_to_slack.py
+      run : python3 snort_result_to_slack.py
