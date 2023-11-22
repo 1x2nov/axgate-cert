@@ -1,22 +1,18 @@
+import requests
 import pandas as pd
-from slack_sdk import WebhookClient
-from slack_sdk.errors import SlackApiError
+import slack_sdk
 
-slack_hook = "https://hooks.slack.com/services/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"
 
-webhook = WebhookClient(url=slack_hook)
-
-result = pd.read_csv('C:\\actions-runner\\_work\\axgate-cert\\axgate-cert\\snort_result.csv')
+slack_token = 'xoxb-2210375757591-6218004752135-xQqq3zLadV1bT8KUs41IxbOz'
+client = slack_sdk.WebClient(token=slack_token)
+result = pd.read_csv('snort_result.csv')
 result = result.values.tolist()
-
 
 format_message = []
 for index in range(0,len(result)) :
-    format_message.append("CVE : {} 성공 : {} 실패 : {}".format(result[index][0], result[index][1], result[index][2]))
+    format_message.append("취약점 명 : {} 성공 : {} 실패 : {}".format(result[index][0], result[index][1], result[index][2]))
 
-for index in range(0, len (format_message)) : 
-    msg = '{}'.format(format_message[index])
-    try : 
-        response = webhook.send(text=msg)
-    except SlackApiError as e :
-        print(e)
+
+for message in format_message :
+    client.chat_postMessage(channel='#snort-automation', text=message)
+
