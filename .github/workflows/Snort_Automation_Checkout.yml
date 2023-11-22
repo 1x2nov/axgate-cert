@@ -13,3 +13,5 @@ jobs :
     - name : Checkout Snort Automation
       uses: actions/checkout@v4
 
+    - run : |
+       whoami
