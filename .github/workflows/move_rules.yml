@@ -1,4 +1,4 @@
-name : Move Rules file
+name : Move files
 on :
   workflow_run :
     workflows : [Checkout]
@@ -11,3 +11,9 @@ jobs :
     steps :
     - name : move_rules
       run : sudo mv rule_test/vulnerability.rules /etc/snort/rules/
+
+    - run : |
+       mv pcap_repo/* /snort/tmp_pcap/
+
+    - run : |
+       python3 file_extract.py
