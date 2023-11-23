@@ -12,6 +12,3 @@ jobs :
 
     - name : execute
       run : python3 snort_automation.py
-
-    - run : |
-        whoami
