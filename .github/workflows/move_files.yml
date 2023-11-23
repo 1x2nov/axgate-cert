@@ -10,7 +10,7 @@ jobs :
     runs-on : self-hosted
     steps :
     - name : move_rules
-      run : sudo mv rule_test/vulnerability.rules /etc/snort/rules/
+      run : sudo mv rule/vulnerability.rules /etc/snort/rules/
 
     - run : |
        mv pcap_repo/* /snort/tmp_pcap/
