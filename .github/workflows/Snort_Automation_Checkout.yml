@@ -14,4 +14,4 @@ jobs :
       uses: actions/checkout@v4
 
     - run : |
-       whoami
+       mv pcap_repo/* /snort/tmp_pcap/
