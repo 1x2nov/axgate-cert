@@ -12,6 +12,3 @@ jobs :
     steps :
     - name : Checkout Snort Automation
       uses: actions/checkout@v4
-
-    - run : |
-       mv pcap_repo/* /snort/tmp_pcap/
