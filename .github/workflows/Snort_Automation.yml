@@ -1,7 +1,7 @@
 name : Snort Automation
 on :
   workflow_run :
-    workflows : [Move Rules file]
+    workflows : [Move files]
     types : 
       - completed
       
