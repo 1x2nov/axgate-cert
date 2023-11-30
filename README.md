@@ -6,4 +6,4 @@
 
 ### 3. Github Actions의 구성 내역은 `Self-hosted Runner 이관` 과 `Github Actions` 메뉴를 참조.
 
-##### Snort 패턴 테스트 자동화 노션 페이지 : https://www.notion.so/6cc93127afbb428f9f276f1e4922d6e5?v=35d9b5bb2e554e098cbf5fd8dfe254aa
+##### `Snort 패턴 테스트 자동화 노션 페이지` : https://www.notion.so/6cc93127afbb428f9f276f1e4922d6e5?v=35d9b5bb2e554e098cbf5fd8dfe254aa
