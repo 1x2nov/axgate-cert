@@ -13,6 +13,8 @@ file.close()
 
 line =[]
 for lines in file_content:
+   if "#" in lines :
+       continue;
    line.append(lines[lines.find("msg:")+5:lines.find("_")]) 
 line = list(set(line)) #Rule에서 검증할 pcap대상을 pcap이름으로 가져와 저장
 
