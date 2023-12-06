@@ -36,6 +36,8 @@ for name in pcap_folder :
             data[runcount].append(result.strip()) #결과값을 data에 저장
         runcount+=1
 
+
+print (data[0][1])
 fail_count=0 # 실패 횟수
 success_count=0 # 성공 횟수
 exe_result = [["CVE NAME", "Success", "Failure","Success Message"]] # 최종 결과 값
