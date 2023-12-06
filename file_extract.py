@@ -27,12 +27,10 @@ for makedir in range(0,len(pcap_list)) :
 
 
 for count in range(0,len(pcap_list)) : 
-    number=1
     for movepcap in pcap_list[count][1] :
         if '.pcap' in movepcap :
             pcapcheck = movepcap.rstrip('.pcap')
             pcapcheck = pcapcheck.replace(" ","_") 
         
             if os.path.exists(path_store+"/"+'aegis_'+pcapcheck+'_pcap') :
-               os.rename(path_extract+'/'+pcap_list[count][0]+'/'+movepcap, path_store+"/"+'aegis_'+pcapcheck+'_pcap'+"/"+pcapcheck+"_"+str(number)+".pcap")
-               number+=1
+                os.rename(path_extract+'/'+pcap_list[count][0]+'/'+movepcap, path_store+"/"+'aegis_'+pcapcheck+'_pcap'+"/"+pcapcheck+"_"+str(count+1)+".pcap")
