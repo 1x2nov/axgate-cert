@@ -36,11 +36,11 @@ for name in pcap_folder :
             data[runcount].append(result.strip()) #결과값을 data에 저장
         runcount+=1
 
-
 fail_count=0 # 실패 횟수
 success_count=0 # 성공 횟수
-exe_result = [["CVE NAME", "Success", "Failure"]] # 최종 결과 값
+exe_result = [["CVE NAME", "Success", "Failure","Success Message"]] # 최종 결과 값
 
+success_msg=[]
 for index in range(0,len(data)) :
     index_for_result = 0
     for check_fail in range(1, len(data[index])-1) : 
@@ -48,13 +48,14 @@ for index in range(0,len(data)) :
             if index_for_result == 0 :
                 cve_tmp = data[index][0]
                 index_for_result += 1
+            success_msg.append(data[index][check_fail+1])
             success_count += 1
         if data[index][0] not in data[index][check_fail+1] :
             if index_for_result == 0 :
                 cve_tmp = data[index][0]
                 index_for_result += 1
             fail_count += 1
-    exe_result.extend([[cve_tmp, success_count, fail_count]])
+    exe_result.extend([[cve_tmp, success_count, fail_count, success_msg]])
 
     success_count = 0
     fail_count = 0
