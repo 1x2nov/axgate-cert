@@ -1,3 +1,3 @@
 FROM ubuntu:latest
 
-RUN cd /tmp && ls -al
+RUN mkdir /tmp && ls -al
