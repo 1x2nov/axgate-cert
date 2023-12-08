@@ -9,3 +9,5 @@ https://www.notion.so/6cc93127afbb428f9f276f1e4922d6e5?v=35d9b5bb2e554e098cbf5fd
 ### 2. 변경사항 혹은 패치 내용은 `Release` 메뉴를 참조.
 
 ### 3. Github Actions의 구성은 `Self-hosted Runner 이관` 과 `Github Actions` 메뉴를 참조.
+
+test
