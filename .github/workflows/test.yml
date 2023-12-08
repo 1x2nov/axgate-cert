@@ -18,4 +18,5 @@ jobs :
           password: ${{ secrets.DOCKERHUB_TOKEN }}
         
       - run : |
+          docker run --rm -it dnif/snort /bin/bash
           ls -al
