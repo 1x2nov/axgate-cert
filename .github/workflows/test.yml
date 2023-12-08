@@ -28,7 +28,7 @@ jobs :
       - name : Docker Image Test
         uses : docker/build-push-action@v2
         with :
-          context : .
+          path : .
           file : ./Dockerfile
           platforms : linux/amd64
           push : true
