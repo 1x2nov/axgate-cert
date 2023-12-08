@@ -30,7 +30,7 @@ jobs :
         uses : docker/build-push-action@v2
         with :
           context : .
-          file : snort_docker
+          file : snort_docker/snort_docker
           platforms : linux/amd64
           push : true
           tags: ${{ steps.docker_meta.outputs.tags }}
