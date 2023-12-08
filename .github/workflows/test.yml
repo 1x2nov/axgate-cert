@@ -29,8 +29,8 @@ jobs :
       - name : Docker Image Test
         uses : docker/build-push-action@v2
         with :
-          context : ../snort_docker
-          file : ./snort_docker
+          path : .
+          file : ./Dockerfile
           platforms : linux/amd64
           push : true
           tags: ${{ steps.docker_meta.outputs.tags }}
