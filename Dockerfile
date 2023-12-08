@@ -3,7 +3,7 @@ FROM ubuntu:latest
 RUN apt-get update
 RUN apt -y install gcc libpcre3-dev zlib1g-dev libluajit-5.1-dev \
     libpcap-dev openssl libssl-dev libnghttp2-dev libdumbnet-dev \ 
-    make bison flex libdnet autoconf libtool
+    make wget bison flex libdnet autoconf libtool
 
 # Fetch source
 RUN cd /usr/local/src && \
