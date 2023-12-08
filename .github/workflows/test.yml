@@ -2,7 +2,6 @@ name : Github Actions Test
 on :
   push :
     branches : master
-    tags : "snort_docker"
 
 
 jobs :
@@ -30,7 +29,7 @@ jobs :
       - name : Docker Image Test
         uses : docker/build-push-action@v2
         with :
-          context : .
+          path : snort_docker
           file : ./snort_docker
           platforms : linux/amd64
           push : true
