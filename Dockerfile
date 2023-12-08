@@ -1,3 +1,3 @@
 FROM ubuntu:latest
 
-RUN mkdir /tmp && ls -al
+RUN cd /tmp && mkdir snort && cd snort && ls -al
