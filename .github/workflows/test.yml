@@ -19,7 +19,7 @@ jobs :
      - name: docker hub image pull
        run : |
          docker login
-         docker pull namhoonkooo/snort-automation:latest
+         docker pull namhoonkooo/snort-automation:1.0
 
      - name : access test
        run : |
