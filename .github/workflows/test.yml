@@ -21,6 +21,6 @@ jobs :
          docker login
          docker pull namhoonkooo/snort-automation:1.0
 
-     - name : access test
+     - name : Build images
        run : |
-         docker images
+         docker run -i namhoonkooo/snort-automation:1.0 /bin/bash << ls -al
