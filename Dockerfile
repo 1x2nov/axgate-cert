@@ -7,7 +7,7 @@ RUN apt install -y build-essential libpcap-dev libpcre3-dev libdumbnet-dev zlib1
 # Install Snort
 RUN DEBIAN_FRONTEND=noninteractive apt-get -q -y install snort
 
-RUN mkdir -p /snort/{aegis_CVE_pcap, tmp_pcap}
+RUN mkdir -p /snort/aegis_CVE_pcap /snort/tmp_pcap
 WORKDIR  /snort
 RUN ls -al
 
