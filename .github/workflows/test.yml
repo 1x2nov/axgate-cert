@@ -29,7 +29,7 @@ jobs :
         env:
           NAME: namhoonkooo
           REPO: snort-automation
-        run:|
+        run: |
           docker build -t $REPO .
           docker tag $REPO:1.0 $NAME/$REPO:1.0
           docker push $NAME/$REPO:1.0
