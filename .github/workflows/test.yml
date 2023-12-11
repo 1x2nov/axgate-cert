@@ -7,9 +7,6 @@ jobs :
   build :
     runs-on : ubuntu-latest
     steps :
-     - name: Checkout
-       uses: actions/checkout@v2
-  
      - name: Set up Docker Buildx
        uses: docker/setup-buildx-action@v1
 
@@ -19,9 +16,9 @@ jobs :
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-     - name: Build and push
-       id: docker_build
-       uses: docker/build-push-action@v2
-       with:
-         push: true
-         tags: namhoonkooo/snort-automation:latest
+     - name: docker hub image pull
+       run : docker pull namhoonkoo/snort-automation:latest
+
+     - name : access test
+       run : |
+         ls -al
