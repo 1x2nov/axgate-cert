@@ -7,10 +7,16 @@ RUN apt install -y build-essential libpcap-dev libpcre3-dev libdumbnet-dev zlib1
 # Install Snort
 RUN DEBIAN_FRONTEND=noninteractive apt-get -q -y install snort
 
-RUN mkdir -p /snort/aegis_CVE_pcap /snort/tmp_pcap
-WORKDIR  /snort
+# Set Enviornment
+ADD /snort/aegis_CVE_pcap && /snort/tmp_pcap 
+
+RUN rm /etc/snort/rules/* && touch /etc/snort/rules/white_list.rules /etc/snort/rules/black_list.rules
 
 COPY snort.conf /etc/snort/snort.conf
 COPY snort_result_to_slack.py /snort
+COPY /rule/vulenrability.rules /etc/snort/rules
+COPY file_extract.py /snort
+COPY snort_automation.py /snort
 
+WORKDIR /snort
 RUN ls -al
