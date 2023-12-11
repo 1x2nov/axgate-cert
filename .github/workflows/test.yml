@@ -21,7 +21,9 @@ jobs :
          docker login
          docker pull namhoonkooo/snort-automation:1.0
 
-     - name : Build images
-       run : |
-         docker run -i namhoonkooo/snort-automation:1.0 /bin/bash
-         docker ps -a
+     - name : Build TEST
+       uses : docker/build-push-action@v2
+       with : 
+         context : .
+         file : ./Dockerfile
+
