@@ -9,6 +9,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -q -y install snort
 
 RUN mkdir -p /snort/aegis_CVE_pcap /snort/tmp_pcap
 WORKDIR  /snort
-RUN ls -al
 
-# COPY snort.conf /etc/snort/snort.conf
+COPY snort.conf /etc/snort/snort.conf
+COPY snort_result_to_slack.py /snort
+
+RUN ls -al
