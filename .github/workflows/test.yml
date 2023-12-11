@@ -19,11 +19,10 @@ jobs :
      - name: docker hub image pull
        run : |
          docker login
-         docker pull namhoonkooo/snort-automation:1.0
+         docker pull ${{ secrets.DOCKERHUB_USERNAME }}/snort-automation:1.0
 
      - name : Build TEST
-       uses : docker/build-push-action@v2
-       with : 
-         context : .
-         file : ./Dockerfile
-
+       run : |
+         docker run -it ${{ secrets.DOCKERHUB_USERNAME }}/snort-automation:1.0
+         docker ps -a
+         
