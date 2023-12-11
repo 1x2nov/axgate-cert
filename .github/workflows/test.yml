@@ -23,6 +23,6 @@ jobs :
 
      - name : access test
        run : |
-         docker run -i -t namhoonkooo/snort-automation /bin/bash
+         docker run -i namhoonkooo/snort-automation /bin/bash
          cd /snort
          ls -al
