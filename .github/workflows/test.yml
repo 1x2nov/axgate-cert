@@ -7,15 +7,6 @@ jobs :
   build :
     runs-on : ubuntu-latest
     steps :
-      - name: Docker meta
-        id: docker_meta
-        uses: crazy-max/ghaction-docker-meta@v1
-        with:
-          images: namhoonkooo/snort_automation
-          tag-semver: |
-            {{version}}
-            {{major}}.{{minor}}
-      
       - name: Docker Buildxt Test
         uses: docker/setup-buildx-action@v1
 
@@ -26,11 +17,12 @@ jobs :
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Dockerhub image test
-        env:
-          NAME: namhoonkooo
-          REPO: snort-automation
-        run: |
-          docker build -t $REPO .
-          docker tag $REPO:1.0 $NAME/$REPO:1.0
-          docker push $NAME/$REPO:1.0
-  
+        id : docker_build
+        uses : docker/build-push-actions@v2
+        with :
+          push : true
+          tags : namhoonkooo/snort-automation:latest
+
+      - name : Docker TEST
+        run : |
+          ls -al
