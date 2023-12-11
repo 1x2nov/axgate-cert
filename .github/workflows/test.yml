@@ -7,14 +7,14 @@ jobs :
   build :
     runs-on : ubuntu-latest
     steps :
-      - name: Docker Buildxt Test
-        uses: docker/setup-buildx-action@v1
-
       - name: Docker Login Test
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Docker Buildxt Test
+        uses: docker/setup-buildx-action@v1
 
       - name: Dockerhub image test
         id : docker_build
