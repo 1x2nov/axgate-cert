@@ -17,7 +17,9 @@ jobs :
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
      - name: docker hub image pull
-       run : docker pull namhoonkoo/snort-automation:latest
+       run : |
+         docker login
+         docker pull namhoonkoo/snort-automation:latest
 
      - name : access test
        run : |
