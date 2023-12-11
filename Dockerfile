@@ -8,7 +8,8 @@ RUN apt install -y build-essential libpcap-dev libpcre3-dev libdumbnet-dev zlib1
 RUN DEBIAN_FRONTEND=noninteractive apt-get -q -y install snort
 
 # Set Enviornment
-ADD /snort/aegis_CVE_pcap /snort/tmp_pcap 
+ADD /snort/aegis_CVE_pcap
+ADD /snort/tmp_pcap 
 
 RUN rm /etc/snort/rules/* && touch /etc/snort/rules/white_list.rules /etc/snort/rules/black_list.rules
 
