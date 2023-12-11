@@ -14,7 +14,7 @@ RUN rm /etc/snort/rules/* && touch /etc/snort/rules/white_list.rules /etc/snort/
 
 COPY snort.conf /etc/snort/snort.conf
 COPY snort_result_to_slack.py /snort
-COPY rule/vulenrability.rules /etc/snort/rules
+COPY axgate/rule/vulenrability.rules /etc/snort/rules
 COPY file_extract.py /snort
 COPY snort_automation.py /snort
 
