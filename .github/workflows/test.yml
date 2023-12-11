@@ -1,4 +1,4 @@
-name : Github Actions Test
+name : Github Actions docker Test
 on :
   push :
     branches : master
@@ -11,7 +11,7 @@ jobs :
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
         with:
-          images: teichae/node
+          images: namhoonkooo/snort_automation
           tag-semver: |
             {{version}}
             {{major}}.{{minor}}
@@ -24,4 +24,13 @@ jobs :
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-    
+
+      - name: Dockerhub image test
+        env:
+          NAME: namhoonkooo
+          REPO: snort-automation
+        run:|
+          docker build -t $REPO .
+          docker tag $REPO:1.0 $NAME/$REPO:1.0
+          docker push $NAME/$REPO:1.0
+  
