@@ -23,4 +23,5 @@ jobs :
 
      - name : Build images
        run : |
-         docker run -i namhoonkooo/snort-automation:1.0 /bin/bash << ls -al
+         docker run -i namhoonkooo/snort-automation:1.0 /bin/bash
+         docker ps -a
