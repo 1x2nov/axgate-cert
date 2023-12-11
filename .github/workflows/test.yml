@@ -24,4 +24,4 @@ jobs :
      - name : Build TEST
        run : |
          docker run -i ${{ secrets.DOCKERHUB_USERNAME }}/snort-automation:1.0
-         docker ps -a -q ${{ secrets.DOCKERHUB_USERNAME }}/snort-automation:1.0
+         docker ps -q  --filter ancestor=${{ secrets.DOCKERHUB_USERNAME }}/snort-automation:1.0
