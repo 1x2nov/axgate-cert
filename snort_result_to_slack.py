@@ -1,8 +1,11 @@
 import pandas as pd
 import slack_sdk
-
+import base64
 
 slack_token = 'xoxb-2210375757591-6218004752135-ub4RV1pRdXgjpoHmkplLNTfM'
+slack_token = slack_token.encode('ascii')
+slack_token = base64.b64decode(slack_token)
+slack_token = slack_token.decode('UTF-8')
 client = slack_sdk.WebClient(token=slack_token)
 result = pd.read_csv('/snort/snort_result.csv')
 result = result.values.tolist()
