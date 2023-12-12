@@ -53,8 +53,8 @@ jobs :
           sudo docker stop snort-automation
           sudo docker rm snort-automation
           sudo docker run -it -d -p 8080:8080 --name snort-automation  namhoonkooo/snort-automation:latest /bin/bash
-          sudo docker exec snort-automation touch test.txt
-      
+          sudo docker exec snort-automation python3 snort_result_to_slack.py
+
      - name : Remove IP From AWS Security Group
        run : |
          aws ec2 revoke-security-group-ingress --group-id ${{ secrets.AWS_SG_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32 
