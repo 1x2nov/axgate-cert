@@ -1,4 +1,4 @@
-name : Github Actions docker Test
+name : Snort Automation Docker Ver.
 on :
   push :
     branches : master
@@ -53,6 +53,7 @@ jobs :
           sudo docker stop snort-automation
           sudo docker rm snort-automation
           sudo docker run -it -d -p 8080:8080 --name snort-automation namhoonkooo/snort-automation:latest
+          python3 snort_automation.py
       
      - name : Remove IP From AWS Security Group
        run : |
