@@ -4,7 +4,7 @@ import slack_sdk
 
 slack_token = 'xoxb-2210375757591-6218004752135-ub4RV1pRdXgjpoHmkplLNTfM'
 client = slack_sdk.WebClient(token=slack_token)
-result = pd.read_csv('/snort/snort_result.csv')
+result = pd.read_csv('/actions-runner/_work/axgate-cert/axgate-cert/snort_result.csv')
 result = result.values.tolist()
 
 format_message = []
