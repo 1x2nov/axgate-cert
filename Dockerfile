@@ -16,6 +16,6 @@ COPY snort_result_to_slack.py /snort
 COPY rule/vulnerability.rules /etc/snort/rules
 COPY file_extract.py /snort
 COPY snort_automation.py /snort
-COPY pcap/*Payload* /snort/tmp_pcap
+COPY pcap /snort/tmp_pcap
 
 WORKDIR /snort
