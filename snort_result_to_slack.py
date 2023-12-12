@@ -2,7 +2,7 @@ import pandas as pd
 import slack_sdk
 import base64
 
-slack_token_decrypt = 'eG94Yi0yMjEwMzc1NzU3NTkxLTYyMTgwMDQ3NTIxMzUtMnVXZmlYYlNKSzc3Z3dRWDBWN05vRk16=='
+slack_token_decrypt = 'eG94Yi0yMjEwMzc1NzU3NTkxLTYyMTgwMDQ3NTIxMzUtMnVXZmlYYlNKSzc3Z3dRWDBWN05vRk16='
 slack_token_decrypt = slack_token_decrypt.encode('ascii')
 slack_token = base64.b64decode(slack_token_decrypt)
 slack_token = str(slack_token)
