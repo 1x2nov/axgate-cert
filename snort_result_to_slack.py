@@ -20,7 +20,7 @@ success_log = []
 for index in range(0,len(result_msg)) :
     if 'CVE' in result_msg[index] : # 리스트로 정리한 Log데이터 중 성공 부분은
         success_log.append(result_msg[index][result_msg[index].index('[*'):-1])
-                # 보기 편하게 슬라이싱
+                # 보기 편하게 슬라이싱 
 
 result_msg=[]
 for index in range(0,len(success_log)):
