@@ -54,7 +54,6 @@ for message in format_message :
             tmp_log += log_msg[index][log_msg[index].index("[*"):]
             tmp_log = tmp_log.rstrip(']')
             tmp_log = tmp_log.rstrip("'") #불필요한 문자열 제거 및 편집하여
-            tmp_log += '\n'
         message="Log :"+'\n'+tmp_log #가독성을 위해 개행하여 message에 저장
     client.chat_postMessage(channel='#snort-auto', text=message)
         #message 변수에 저장된 값을 Slack으로 전송
