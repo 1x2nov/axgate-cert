@@ -22,3 +22,4 @@ WORKDIR /snort
 RUN pip install pandas slack_sdk
 RUN python3 file_extract.py
 RUN python3 snort_automation.py
+RUN python3 snort_result_to_slack.py
