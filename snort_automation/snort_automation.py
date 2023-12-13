@@ -61,8 +61,5 @@ for index in range(0,len(data)) :
     success_count = 0
     fail_count = 0
 
-
-print(exe_result)
-
 df_exe_result = pd.DataFrame(exe_result)
 df_exe_result.to_csv("/snort/snort_result.csv", header=None, index=None)

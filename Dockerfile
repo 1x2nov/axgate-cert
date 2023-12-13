@@ -17,5 +17,6 @@ COPY rule/vulnerability.rules /etc/snort/rules
 COPY snort_automation /snort
 COPY pcap /snort/tmp_pcap
 
+ADD http://www.random.org/strings/?num=10&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new /var/tmp/uuid
 WORKDIR /snort
 RUN python3 file_extract.py && python3 snort_automation.py && python3 snort_result_to_slack.py
