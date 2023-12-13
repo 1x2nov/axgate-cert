@@ -8,8 +8,6 @@ slack_token = base64.b64decode(slack_token_decrypt)
 slack_token = str(slack_token)
 slack_token = slack_token[2:-1]
 
-print(slack_token)
-
 client = slack_sdk.WebClient(token=slack_token)
 result = pd.read_csv('/snort/snort_result.csv')
 result = result.values.tolist()
