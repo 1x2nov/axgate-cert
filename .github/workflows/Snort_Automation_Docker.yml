@@ -27,6 +27,7 @@ jobs :
          cache-from : type=gha
          cache-to : type=gha,mode=max 
 
+     # Try to connect AWS (연동은 성공적으로 되었지만, AWS EC2를 사용할 경우 발생하는 Cost나 인력)
      # - name : Get Github IP
      #   id : ip
      #   uses : haythem/public-ip@v1.2
