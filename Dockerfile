@@ -17,4 +17,5 @@ COPY rule/vulnerability.rules /etc/snort/rules
 COPY snort_automation /snort
 COPY pcap /snort/tmp_pcap
 
+WORKDIR /snort
 RUN python3 file_extract.py && python3 snort_automation.py && python3 snort_result_to_slack.py
