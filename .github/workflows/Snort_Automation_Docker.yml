@@ -1,60 +1,60 @@
-# name : Snort Automation Docker Ver.
-# on :
-#   push :
-#     branches : master
+name : Snort Automation Docker Ver.
+on :
+  push :
+    branches : master
 
-# jobs : 
-#   build :
-#     runs-on : ubuntu-latest
-#     steps :
-#      - name: Set up Docker Buildx
-#        uses: docker/setup-buildx-action@v2
+jobs : 
+  build :
+    runs-on : ubuntu-latest
+    steps :
+     - name: Set up Docker Buildx
+       uses: docker/setup-buildx-action@v2
 
-#      - name: Login to DockerHub
-#        uses: docker/login-action@v1
-#        with:
-#         username: ${{ secrets.DOCKERHUB_USERNAME }}
-#         password: ${{ secrets.DOCKERHUB_TOKEN }}
+     - name: Login to DockerHub
+       uses: docker/login-action@v1
+       with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
 
 
-#      - name : Build Docker Image & Push to docker hub
-#        uses : docker/build-push-action@v2
-#        with : 
-#          file : ./Dockerfile
-#          push : true
-#          tags : ${{ secrets.DOCKERHUB_USERNAME }}/snort-automation:latest
-#          cache-from : type=gha
-#          cache-to : type=gha,mode=max
+     - name : Build Docker Image & Push to docker hub
+       uses : docker/build-push-action@v2
+       with : 
+         file : ./Dockerfile
+         push : true
+         tags : ${{ secrets.DOCKERHUB_USERNAME }}/snort-automation:latest
+         cache-from : type=gha
+         cache-to : type=gha,mode=max
      
-#      - name : Get Github IP
-#        id : ip
-#        uses : haythem/public-ip@v1.2
+     # - name : Get Github IP
+     #   id : ip
+     #   uses : haythem/public-ip@v1.2
 
-#      - name : AWS Authentication
-#        uses : aws-actions/configure-aws-credentials@v1
-#        with : 
-#           aws-access-key-id : ${{ secrets.AWS_ACCESS_KEY_ID }}
-#           aws-secret-access-key : ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#           aws-region : ap-northeast-2
+     # - name : AWS Authentication
+     #   uses : aws-actions/configure-aws-credentials@v1
+     #   with : 
+     #      aws-access-key-id : ${{ secrets.AWS_ACCESS_KEY_ID }}
+     #      aws-secret-access-key : ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+     #      aws-region : ap-northeast-2
 
-#      - name : Github IP add to AWS Security Group
-#        run : |
-#         aws ec2 authorize-security-group-ingress --group-id ${{ secrets.AWS_SG_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
+     # - name : Github IP add to AWS Security Group
+     #   run : |
+     #    aws ec2 authorize-security-group-ingress --group-id ${{ secrets.AWS_SG_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
 
-#      - name : Connect to AWS EC2 & Docker
-#        uses : appleboy/ssh-action@v0.1.6
-#        with : 
-#         host : ${{ secrets.EC2_HOST }}
-#         username : ubuntu
-#         password : ${{ secrets.EC2_PASSWORD }}
-#         port : ${{ secrets.EC2_SSH_PORT }}
-#         timeout : 90s
-#         script : |
-#           sudo docker stop snort-automation
-#           sudo docker rm snort-automation
-#           sudo docker run -it -d -p 8080:8080 --name snort-automation  namhoonkooo/snort-automation:latest /bin/bash
-#           sudo docker exec snort-automation python3 snort_result_to_slack.py
+     # - name : Connect to AWS EC2 & Docker
+     #   uses : appleboy/ssh-action@v0.1.6
+     #   with : 
+     #    host : ${{ secrets.EC2_HOST }}
+     #    username : ubuntu
+     #    password : ${{ secrets.EC2_PASSWORD }}
+     #    port : ${{ secrets.EC2_SSH_PORT }}
+     #    timeout : 90s
+     #    script : |
+     #      sudo docker stop snort-automation
+     #      sudo docker rm snort-automation
+     #      sudo docker run -it -d -p 8080:8080 --name snort-automation  namhoonkooo/snort-automation:latest /bin/bash
+     #      sudo docker exec snort-automation python3 snort_result_to_slack.py
 
-#      - name : Remove IP From AWS Security Group
-#        run : |
-#          aws ec2 revoke-security-group-ingress --group-id ${{ secrets.AWS_SG_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32 
+     # - name : Remove IP From AWS Security Group
+     #   run : |
+     #     aws ec2 revoke-security-group-ingress --group-id ${{ secrets.AWS_SG_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32 
