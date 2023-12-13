@@ -24,7 +24,7 @@ jobs :
          push : true
          tags : ${{ secrets.DOCKERHUB_USERNAME }}/snort-automation:latest
          cache-from : type=gha
-         cache-to : type=gha,mode=max
+         cache-to : type=gha,mode=max 
      
      # - name : Get Github IP
      #   id : ip
