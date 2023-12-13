@@ -29,7 +29,8 @@ jobs :
      - name : Slack TEST
        run : |
          docker run -i --name snort-automation  ${{ secrets.DOCKERHUB_USERNAME }}/snort-automation:latest /bin/bash
-         docker ps -a
+         sleep 3
+         docker exec snort-automation python3 file_extract.py 
 
      # - name : Get Github IP
      #   id : ip
