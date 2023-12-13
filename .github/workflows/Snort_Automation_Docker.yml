@@ -1,8 +1,10 @@
 name : Snort Automation Docker Ver.
-on :
+on : 
   push :
-    branches : master
-    paths : "rule/vulnerability.rules"
+    branches : 
+      - master
+    paths :
+      - "rule/vulnerability.rules"
 
 jobs : 
   build :
