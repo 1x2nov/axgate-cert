@@ -30,7 +30,7 @@ jobs :
        run : |
          docker run -i --name snort-automation  ${{ secrets.DOCKERHUB_USERNAME }}/snort-automation:latest /bin/bash
          sleep 3
-         docker exec -i snort-automation 
+         docker exec -i snort-automation /bin/bash
          docker exec snort-automation ls -al
 
      # - name : Get Github IP
