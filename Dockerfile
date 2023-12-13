@@ -1,8 +1,8 @@
 FROM ubuntu:latest
 
 # Dependancy Install
-RUN apt-get update
-RUN apt install -y vim build-essential libpcap-dev libpcre3-dev libdumbnet-dev zlib1g-dev liblzma-dev openssl libssl-dev bison flex libhwloc-dev pip pkg-config openssh-server net-tools iputils-ping
+RUN apt-get update && apt-get install -y vim build-essential libpcap-dev libpcre3-dev libdumbnet-dev zlib1g-dev \
+    liblzma-dev openssl libssl-dev bison flex libhwloc-dev pip pkg-config openssh-server net-tools iputils-ping
 RUN pip install pandas slack_sdk
 
 # Install Snort
@@ -17,4 +17,4 @@ COPY rule/vulnerability.rules /etc/snort/rules
 COPY snort_automation /snort
 COPY pcap /snort/tmp_pcap
 
-RUN apk --no-cahe python3 file_extract.py && python3 snort_automation.py && python3 snort_result_to_slack.py
+RUN python3 file_extract.py && python3 snort_automation.py && python3 snort_result_to_slack.py
