@@ -2,6 +2,7 @@ name : Snort Automation Docker Ver.
 on :
   push :
     branches : master
+    paths : "rule/vulnerability.rules"
 
 jobs : 
   build :
