@@ -26,7 +26,12 @@ jobs :
          cache-from : type=gha
          cache-to : type=gha,mode=max 
      
-    # - name : Get Github IP
+     - name : Slack TEST
+       run : |
+        sudo docker run -i --name snort-automation  ${{ secrets.DOCKERHUB_USERNAME }}/snort-automation:latest /bin/bash
+        sudo docker exec python3 snort_result_to_slack
+
+     # - name : Get Github IP
      #   id : ip
      #   uses : haythem/public-ip@v1.2
 
