@@ -49,7 +49,7 @@ for index in range(0,len(data)) :
             if index_for_result == 0 :
                 cve_tmp = data[index][0]
                 index_for_result += 1
-            success_msg.append(data[index][check_fail+1]+'\n')
+            success_msg.append(data[index][check_fail+1])
             success_count += 1
         if data[index][0] not in data[index][check_fail+1] :
             if index_for_result == 0 :
