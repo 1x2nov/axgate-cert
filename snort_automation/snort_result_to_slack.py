@@ -2,15 +2,15 @@ import pandas as pd
 import slack_sdk
 import base64
 
-slack_token_decrypt = 'eG94Yi0yMjEwMzc1NzU3NTkxLTYyMTgwMDQ3NTIxMzUtMnVXZmlYYlNKSzc3Z3dRWDBWN05vRk16='
+slack_token_decrypt = 'eG94Yi0yMjEwMzc1NzU3NTkxLTYyMTgwMDQ3NTIxMzUtMnVXZmlYYlNKSzc3Z3dRWDBWN05vRk16='# Github처럼 Public한 곳에 slack token이 노출될 경우 자동으로 비활성화 되기 때문에, base64로 암호화
 slack_token_decrypt = slack_token_decrypt.encode('ascii')
 slack_token = base64.b64decode(slack_token_decrypt)
 slack_token = str(slack_token)
-slack_token = slack_token[2:-1]
+slack_token = slack_token[2:-1] # base64로 암호화 한 slack token을 decode하고, b' 부분을 제거 하고 slack_token에 값 저장
 
 client = slack_sdk.WebClient(token=slack_token)
 result = pd.read_csv('/snort/snort_result.csv')
-result = result.values.tolist()
+result = result.values.tolist() #csv 파일에서 DataFrame을 불러와 List형으로 저장
 
 result_msg = result[0][3].split(',') # 불러온 데이터 중 Log 부분 데이터 리스트로 저장
 
